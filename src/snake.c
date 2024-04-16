@@ -19,7 +19,6 @@
  * provided quickly enough.
  */
 enum input_key get_input() {
-    /* DO NOT MODIFY THIS FUNCTION */
     int input = getch();
 
     if (input == KEY_UP) {
@@ -35,11 +34,9 @@ enum input_key get_input() {
         // other keys in if we want other commands, like 'pause' or 'quit')
         return INPUT_NONE;
     }
-    /* DO NOT MODIFY THIS FUNCTION */
 }
 
 /** Helper function that procs the GAME OVER screen and final key prompt.
- * `snake_p` is not needed until Part 3!
  */
 void end_game(int* cells, size_t width, size_t height, snake_t* snake_p) {
     // Game over!
@@ -49,7 +46,6 @@ void end_game(int* cells, size_t width, size_t height, snake_t* snake_p) {
     teardown(cells, snake_p);
 
 
-    // ****************** UNCOMMENT THIS CODE IN PART 3B ***********************
     
     // Render final GAME OVER PRESS ANY KEY TO EXIT screen
     render_game_over(width, height);
@@ -72,8 +68,8 @@ int main(int argc, char** argv) {
     int* cells;     // a pointer to the first integer in an array of integers
                     // representing each board cell.
 
-    // snake data (only used in part 3!)
-    snake_t snake;    // your snake struct. (not used until part 3!)
+
+    snake_t snake;    
     int snake_grows;  // 1 if snake should grow, 0 otherwise.
 
     enum board_init_status status;
@@ -109,18 +105,13 @@ int main(int argc, char** argv) {
             return 0;
     }
 
-    // ----------- DO NOT MODIFY ANYTHING IN `main` ABOVE THIS LINE -----------
+ 
 
     // Check validity of the board before rendering!
-    // TODO: Implement (in Part 2)
-    // if ( ? board is not valid ? ) { return EXIT_FAILURE; }
 
-    // if (! status){
-    //     return EXIT_FAILURE;
-    // }
    
     // Read in the player's name & save its name and length
-    // TODO: Implement (in Part 3B)
+
     char name_buffer[1000];
     read_name(name_buffer);
     g_name = name_buffer;
@@ -128,16 +119,7 @@ int main(int argc, char** argv) {
     // ? save name_buffer ?
     // ? save mbslen(name_buffer) ?
 
-    // TODO: Remove this message, uncomment the code below this message
-    //       and implement Part 1A here.
-    // printf(
-    //     "             ____   \n"
-    //     "Hello       / . .\\ \n"
-    //     "CS 300      \\  ---<\n
-    //     "student!     \\  /  \n"
-    //     "   __________/ /    \n"
-    //     "-=:___________/\n");
-
+    
     initialize_window(width, height);
     printf("%s","wel");
 
@@ -150,5 +132,4 @@ int main(int argc, char** argv) {
     end_game(cells, width, height, &snake); 
 }
 
-// create a function
-// returns a vcoid pimyer
+
