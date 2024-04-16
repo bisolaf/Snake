@@ -6,17 +6,6 @@
 #include <stddef.h>
 
 /**
- * In this file, you will find the partial implementation of common doubly
- * linked list functions.
- *
- * Your first task is to debug some of the functions!
- *
- * After you have found all of the bugs, you will be writing three doubly
- * linked list functions and test them.
- *
- */
-
-/**
  * find and return the length of the list
  *
  * given a pointer to the head of list
@@ -63,7 +52,7 @@ void* get_last(node_t* head_list) {
   return NULL;
   }
 
-/** TODO: implement this!
+/** 
  * inserts element at the beginning of the list
  *
  * given a pointer to the head of the list, a void pointer representing the
@@ -128,7 +117,7 @@ void insert_last(node_t** head_list, void* to_add, size_t size) {
   new_node->next= NULL;
 }
 
-/** TODO: implement this!
+/** 
  * gets the element from the linked list
  *
  * given a pointer to the head of the list and an index into the linked list
@@ -151,11 +140,11 @@ void* get(node_t* head_list, int index) {
   }
   return NULL; 
 
-  if (!head_list){ //is list empty?
+  if (!head_list){ 
     return NULL;
   }
 
-  if (index <0 ){ // is index out of bounds?
+  if (index <0 ){ 
     return NULL;
   }
 }
@@ -254,10 +243,7 @@ void* remove_first(node_t** head_list) {
     (*head_list)->prev = NULL;
   }
 
-  // free(curr->data);
-  // free(curr);
-
-  // return curr->data;
+  
   void* result = curr->data;
 
   // Free memory of the removed node
@@ -267,7 +253,7 @@ void* remove_first(node_t** head_list) {
 
 }
 
-/** TODO: implement this!
+/** 
  * removes the last element of the linked list if it exists
  *
  * given a pointer to the head of the linked list
