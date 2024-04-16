@@ -19,7 +19,7 @@ enum board_init_status {
     INIT_ERR_WRONG_SNAKE_NUM,  // no snake or multiple snakes are on the board
     INIT_ERR_BAD_CHAR,  // any other part of the compressed string was formatted
                         // incorrectly
-    INIT_UNIMPLEMENTED  // only used in stencil, no need to handle this
+    INIT_UNIMPLEMENTED  
 };
 
 enum board_init_status initialize_game(int** cells_p, size_t* width_p,
