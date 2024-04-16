@@ -24,12 +24,11 @@ int remove_free(node_t** head) {
     snake_t* new_snake = (snake_t*)malloc(sizeof(snake_t));
     if (new_snake == NULL) {
         // Handle memory allocation failure
-        // For example, print an error message and return NULL
         return NULL;
     }
     
-    // Initialize the fields of the snake struct if needed
-    new_snake->head = NULL; // Initialize g_snakeloc to NULL or allocate memory for it
+    // Initialize the fields of the snake 
+    new_snake->head = NULL; 
     new_snake->g_snakedirc = RIGHT; // Initialize g_snakedirc to a default value
     
     // Return a pointer to the newly created snake struct
@@ -48,15 +47,6 @@ int remove_free(node_t** head) {
  */
 void update(int* cells, size_t width, size_t height, snake_t* snake_p,
             enum input_key input, int growing) {
-    // `update` should update the board, your snake's data, and global
-    // variables representing game information to reflect new state. If in the
-    // updated position, the snake runs into a wall or itself, it will not move
-    // and global variable g_game_over will be 1. Otherwise, it will be moved
-    // to the new position. If the snake eats food, the game score (`g_score`)
-    // increases by 1. This function assumes that the board is surrounded by
-    // walls, so it does not handle the case where a snake runs off the board.
-
-    // TODO: implement! 
     if (g_game_over == 1){
         return;
     }
@@ -84,7 +74,7 @@ void update(int* cells, size_t width, size_t height, snake_t* snake_p,
                 move_snake  = g_snakeloc + 1;
                 snake_p->g_snakedirc = RIGHT;
         } 
-        if (input == INPUT_LEFT) { // (input == INPUT_LEFT)
+        if (input == INPUT_LEFT) { 
                 move_snake  = g_snakeloc - 1;
                 snake_p->g_snakedirc = LEFT;        
         }
@@ -110,7 +100,6 @@ void update(int* cells, size_t width, size_t height, snake_t* snake_p,
         }
 
         else {
-            //when the next cell 
             if (growing == 1){ //if growing ==1
 
             if (move_snake == (*(int*)get_last(snake_p->head))) {
