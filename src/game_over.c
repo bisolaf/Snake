@@ -20,10 +20,8 @@
  *  - width: width of the board
  *  - height: height of the board
  */
-// ****************** TODO UNCOMMENT THIS CODE IN PART 3B ***********************
 
 void render_game_over(size_t width, size_t height) {
-    // DO NOT MODIFY THE CONTENTS OF THIS FUNCTION
     int y_center = ((int)height / 2);
     int x_center = ((int)width / 2);
 
@@ -31,7 +29,6 @@ void render_game_over(size_t width, size_t height) {
     WRITEW(y_center - 2, x_center - (g_name_len / 2), "%s", g_name);
     int number_of_digits_in_score =
         g_score ? (int)(ceil(log10((double)g_score))) : 1;
-    // (note that log10(0) is undefined, so we have to catch it)
     WRITEW(y_center - 1, x_center - ((7 + number_of_digits_in_score) / 2),
            "SCORE: %d", g_score);
 
