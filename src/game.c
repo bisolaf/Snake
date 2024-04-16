@@ -18,22 +18,6 @@ int remove_free(node_t** head) {
     return value;
 }
 
-// enum dirc change_dir(enum input_key dirc){
-//     if (dirc == INPUT_LEFT){
-//         return RIGHT;
-//     }
-//     if (dirc == INPUT_RIGHT){
-//         return LEFT;
-//     }
-//     if (dirc == INPUT_DOWN){
-//         return UP;
-//     }
-//     if (dirc == INPUT_UP){
-//         return DOWN;
-//     }
-//     return RIGHT;
-// }
-
 
  snake_t* create_snake() {
     // Allocate memory for the snake struct
@@ -76,13 +60,9 @@ void update(int* cells, size_t width, size_t height, snake_t* snake_p,
     if (g_game_over == 1){
         return;
     }
-    // static enum input_key curr = INPUT_RIGHT;
+   
 
-    // if (input != INPUT_NONE){
-    //     if ((curr != change_dir(input)) || (length_list(snake_p->head)< 2)){
-    //         curr = input;
-    //     }
-    // }
+
     int* pointer = get_first(snake_p->head);
     int move_snake;
     int g_snakeloc = ((*(int*)(snake_p->head->data)));
@@ -110,7 +90,7 @@ void update(int* cells, size_t width, size_t height, snake_t* snake_p,
         }
     }
     else {
-            if (g_snakedirc == DOWN){ // direction == DOWN not input! this part of the if statement is when the input is none
+            if (g_snakedirc == DOWN){ 
                 move_snake  = g_snakeloc + width; 
                           
             }     
@@ -121,7 +101,7 @@ void update(int* cells, size_t width, size_t height, snake_t* snake_p,
                 move_snake  = g_snakeloc - 1;
             }
     }
-    ///create a new fuction with enum that moves the opposite direction
+    ///create a new function with enum that moves the opposite direction
         
     //validity
     int tail = (*(int*)get_last(snake_p->head));
@@ -174,7 +154,7 @@ void update(int* cells, size_t width, size_t height, snake_t* snake_p,
         cells[((*(int*)(snake_p->head->data))) + width] = FLAG_SNAKE;
     }
 }
-//  }
+
 
             
 
@@ -191,7 +171,7 @@ void update(int* cells, size_t width, size_t height, snake_t* snake_p,
             }
             } 
 
-        else { //plain cell case
+        else { 
             if (cells[move_snake] == PLAIN_CELL){
                 int old = remove_free(&(snake_p->head));
                 insert_first(&(snake_p->head), &move_snake, sizeof(move_snake)); 
@@ -231,7 +211,7 @@ void update(int* cells, size_t width, size_t height, snake_t* snake_p,
                 cells[g_snakeloc] = PLAIN_CELL;
             }
             }
-         ///regular functionality snake 0
+    
             if (cells[move_snake] == FLAG_GRASS ){ 
             if((cells[g_snakeloc] == FLAG_SNAKE)){ 
                 cells[g_snakeloc] = PLAIN_CELL;
@@ -287,7 +267,6 @@ void place_food(int* cells, size_t width, size_t height) {
     } else {
         place_food(cells, width, height);
     }
-    /* DO NOT MODIFY THIS FUNCTION */
 }
 
 /** Prompts the user for their name and saves it in the given buffer.
@@ -295,9 +274,7 @@ void place_food(int* cells, size_t width, size_t height) {
  *  - `write_into`: a pointer to the buffer to be written into.
  */
 void read_name(char* write_into) {
-    // TODO: implement! (remove the call to strcpy once you begin your
-    // implementation)
-    // strcpy(write_into, "placeholder");
+
     printf("Name >");
     fflush(stdout);
     int args = read(0, write_into, 1000);
@@ -324,14 +301,11 @@ void read_name(char* write_into) {
  *  - snake_p: a pointer to your snake struct. (not needed until part 3)
  */
 void teardown(int* cells, snake_t* snake_p) {
-    // TODO: implement!
-    // free(snake_p);
+   
     while (snake_p->head != NULL){
         void* node = get_first(snake_p->head);
         remove_element(&(snake_p->head), node, sizeof(*node));
     }
     free(cells);
-    // if (snake_p->g_snakeloc->data != NULL){
-    //      free(snake_p);
-    // }
+    
 }
