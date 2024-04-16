@@ -4,10 +4,7 @@
 #include <stddef.h>
 #include "linked_list.h"
 
-// Let's see if we can keep this as simple as possible, lest we intimidate
-// students looking through the provided code.
 
-// Bitflags enable us to store cell data in integers!
 #define PLAIN_CELL 0b0000      // equals 0
 #define FLAG_SNAKE 0b0001      // equals 1
 #define FLAG_WALL  0b0010      // equals 2
@@ -24,14 +21,10 @@
 enum input_key { INPUT_UP, INPUT_DOWN, INPUT_LEFT, INPUT_RIGHT, INPUT_NONE };
 enum dirc {UP, DOWN, LEFT, RIGHT};
 
-// TODO: declare global variables needed for your snake (as `extern`)! (part 1A)
-// extern int g_snakeloc;
-// extern enum dirc g_snakedirc;
+
 /** Global variables for game status.
  *
- * `g_` prefix used by convention to emphasize that these are global.
- *
- * You may need to add variables here in part 3 of the project!
+ 
  *
  * Variables:
  *  - g_game_over: 1 if game is over, 0 otherwise
@@ -41,17 +34,10 @@ extern int g_game_over;  // 1 if game is over, 0 otherwise
 extern int g_score; 
 extern int g_name_len;
 extern char* g_name;
-     // game score: 1 point for every food eaten
-/** Snake struct. This struct is not needed until part 3!
- * Fields:
- *  - None yet!
- */
+  
 typedef struct snake {
-    // TODO: Define your snake struct! (in ')
     node_t* head; 
     enum dirc g_snakedirc;
-
-    // Store any necessary information about your snake here.
 } snake_t;
 
  
