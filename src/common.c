@@ -2,9 +2,6 @@
 
 #include <stdlib.h>
 
-// TODO: define global variables needed for your snake! (part 1A)
-// int g_snakeloc; 
-// enum dirc g_snakedirc;
 
 // Definition of global variables for game status.
 int g_game_over;
@@ -16,12 +13,10 @@ char* g_name;
 
 /** Sets the seed for random number generation.
  * Arguments:
- *  - `seed`: the seed.
+ * 
  */
 void set_seed(unsigned seed) {
-    /* DO NOT MODIFY THIS FUNCTION */
-    srand(seed);
-    /* DO NOT MODIFY THIS FUNCTION */
+    srand(seed);    
 }
 
 /** Returns a random index in [0, size)
@@ -29,7 +24,5 @@ void set_seed(unsigned seed) {
  *  - `size`: the upper bound for the generated value (exclusive).
  */
 unsigned generate_index(unsigned size) {
-    /* DO NOT MODIFY THIS FUNCTION */
     return rand() % size;
-    /* DO NOT MODIFY THIS FUNCTION */
 }
