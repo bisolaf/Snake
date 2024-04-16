@@ -18,7 +18,7 @@
  * 
  */
 size_t mbslen(const char* bytes) {
-    // TODO: implement!
+
     size_t result = 0;
 
     while (*bytes != '\0') {
