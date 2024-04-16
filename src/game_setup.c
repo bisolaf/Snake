@@ -91,14 +91,11 @@ enum board_init_status initialize_default_board(int** cells_p, size_t* width_p,
 enum board_init_status initialize_game(int** cells_p, size_t* width_p,
                                        size_t* height_p, snake_t* snake_p,
                                        char* board_rep) {
-    // TODO: implement!
     snake_t snakel;
     snakel.g_snakedirc = RIGHT;
     snakel.head = NULL;
     *snake_p = snakel;
-    // enum dirc g_snakedirc = (*snake_p).g_snakedirc;
 
-    // int g_snakeloc = (*snake_p).g_snakeloc;
 
 
     g_game_over = 0;
@@ -116,16 +113,12 @@ enum board_init_status initialize_game(int** cells_p, size_t* width_p,
                 insert_first(&(snake_p->head), &locs, sizeof(locs));
                 break;
             }
-            // else{ 
-            //     return INIT_ERR_WRONG_SNAKE_NUM;
-            // }
+            
     }
     }
     else{
         result = initialize_default_board(cells_p, width_p, height_p);
         place_food(*cells_p, *width_p, *height_p);
-        // (*snake_p).g_snakedirc = RIGHT;
-        // ((*(int*)(snake_p->g_snakeloc->data))) = 42;
         int loc =  42;
         insert_first(&(snake_p->head), &loc, sizeof(loc));
     
@@ -165,7 +158,6 @@ void fill_array (int head, int end, int* cells, int max, int ele){
 This function helps to read the numbers of each compressed string and turn it into an int so we can pass
 into like B 789 it will return the 789 or an error*/
 int read_b (char* compressed_string){
-    // char* tobefreed = strdup(compressed_string);
     char* boarddim = strtok(compressed_string, "|");
 
     int rownumber = 0; //initialize the row
@@ -191,10 +183,6 @@ int read_x (char* compressed_string){
     }
     return col;
 }
-  
-
-//now i have the number
-// I need to use that to set uo the row and column
 char* read_string (int** cells_p, size_t* width_p, size_t* height_p, char* compressed_string){
     if (compressed_string == NULL) {
         printf("Invalid input: compressed_string is NULL\n");
@@ -207,28 +195,22 @@ char* read_string (int** cells_p, size_t* width_p, size_t* height_p, char* compr
         printf("Memory allocation error\n");
         return NULL;
     }
-
-// seperate string with |
-    // char* tobefreed = strdup(compressed_string);
     char* boarddim = strtok(tobefreed, "|");
 
-// find row with B & Number
     int row = 0;
     int col = 0;
 
     if (boarddim == NULL) {
         printf("Invalid format: Missing row dimension\n");
         free(tobefreed);
-        return NULL;  // Or return an appropriate error code
+        return NULL;  
     }
 
     if (boarddim[0] == 'B'){
         row = read_b(compressed_string);
-    //    create a helper to handle really long digits
     }
     else{
         printf("Invalid format: Missing column dimension\n");
-        // return enum board_init_status INIT_ERR_BAD_CHAR;
     }
     boarddim = strtok(NULL, "|");
     if (boarddim == NULL) {
@@ -241,7 +223,6 @@ char* read_string (int** cells_p, size_t* width_p, size_t* height_p, char* compr
      }
     else{
         free(tobefreed);
-        // return enum board_init_status INIT_ERR_BAD_CHAR;
      }
 
     *height_p = row;
@@ -262,16 +243,12 @@ char* read_string (int** cells_p, size_t* width_p, size_t* height_p, char* compr
  *      - height_p: a pointer to the height variable we'd like to initialize.
  *      - snake_p: a pointer to your snake struct (not used until part 3!)
  *      - compressed: a string that contains the representation of the board.
- * Note: We assume that the string will be of the following form:
- * B24x80|E5W2E73|E5W2S1E72... To read it, we scan the string row-by-row
- * (delineated by the `|` character), and read out a letter (E, S or W) a number
- * of times dictated by the number that follows the letter.
+ *
  */
 enum board_init_status decompress_board_str(int** cells_p, size_t* width_p,
                                             size_t* height_p, snake_t* snake_p,
                                             char* compressed) {
-    // TODO: implement
-    // char* stats = read_string (cells_p, width_p, height_p, compressed);
+    
     char* boarddim = strtok(compressed, "|");
     int rownumber = 0; 
 
@@ -285,15 +262,12 @@ enum board_init_status decompress_board_str(int** cells_p, size_t* width_p,
     }
 
     rownumber =atoi(&boarddim[1]);
-    // row = read_b(compressed);
     
-    // check position of x
+  
     int i = 1;
     while(boarddim[i] != 'x'){ 
         i++; 
     }
-
-   //else case
     if(boarddim[i] != 'x'){
         return INIT_ERR_BAD_CHAR;
     }
@@ -306,22 +280,17 @@ enum board_init_status decompress_board_str(int** cells_p, size_t* width_p,
     *width_p = columnnumber;
     *height_p = rownumber;
 
- //make array
     int* arr = malloc(columnnumber * rownumber * sizeof(int));
     *cells_p = arr;
 
-    // 1. set up the first res to check getting first token after dimensions
-    // 2.make a counter
-    // 3.set each
     char* tocheck = strtok(NULL, "|");
     int rowcount = 0; 
     int start = 0;
     int snakecount = 0;
   
-    //when you find an "S" set snake position to the index of the "S'"
-    while (tocheck != NULL){ 
     
-        // getting the chars in the token
+    while (tocheck != NULL){ 
+  
         int colcoun = 0;
         int total = 0;
         int len_toc = strlen(tocheck);
@@ -344,8 +313,7 @@ enum board_init_status decompress_board_str(int** cells_p, size_t* width_p,
                 }
                 else if (letter == 'S' && (itemn != 0)){
                     snakecount += itemn;
-                    // boarddim[snakecount] = FLAG_SNAKE;
-                    // *cells_p[snakecount] = FLAG_SNAKE;
+                    
                 }
 
                 int chart = set_board(letter);
